@@ -38,7 +38,7 @@ python src\experiment_suite.py > evidence\extended-results.json
 python src\certificate_demo.py > evidence\certificate-output.json
 ```
 
-> 证据文件一律由脚本重定向生成，不要手工编辑，否则会与脚本输出结构不一致而无法复现。
+> 仓库中的证据文件是一次实际运行的样例。重新运行脚本时，密钥、证书序列号和耗时会变化；如要替换证据，应同时更新报告中的对应数据。
 
 ## 文件用途速查
 

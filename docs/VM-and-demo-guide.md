@@ -85,7 +85,7 @@ python src\experiment_suite.py > evidence\extended-results.json
 python src\certificate_demo.py > evidence\certificate-output.json
 ```
 
-证据文件必须由上面的命令直接生成，不要手工修改，否则无法与脚本输出保持一致。
+仓库中的证据文件是一次实际运行的样例。重新生成时，密钥、证书序列号和耗时会变化；如果替换证据文件，应重新截取对应截图，并确认报告中的数据仍然对应本次运行。
 
 ## 四、视频录制顺序
 
