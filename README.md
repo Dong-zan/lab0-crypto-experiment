@@ -33,10 +33,12 @@ Linux/macOS 将激活命令替换为 `source .venv/bin/activate`。
 
 ```powershell
 python -m unittest discover -s tests -v
-python src\crypto_demo.py --json > evidence\sample-output.json
+python src\crypto_demo.py --json --message "Big Data Security Lab0: cryptography experiment" > evidence\sample-output.json
 python src\experiment_suite.py > evidence\extended-results.json
-python src\certificate_demo.py
+python src\certificate_demo.py > evidence\certificate-output.json
 ```
+
+> 证据文件一律由脚本重定向生成，不要手工编辑，否则会与脚本输出结构不一致而无法复现。
 
 ## 文件用途速查
 

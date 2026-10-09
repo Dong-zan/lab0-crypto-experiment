@@ -80,9 +80,12 @@ python -m unittest discover -s tests -v
 生成报告数据文件：
 
 ```powershell
-python src\crypto_demo.py --json > evidence\sample-output.json
+python src\crypto_demo.py --json --message "Big Data Security Lab0: cryptography experiment" > evidence\sample-output.json
 python src\experiment_suite.py > evidence\extended-results.json
+python src\certificate_demo.py > evidence\certificate-output.json
 ```
+
+证据文件必须由上面的命令直接生成，不要手工修改，否则无法与脚本输出保持一致。
 
 ## 四、视频录制顺序
 

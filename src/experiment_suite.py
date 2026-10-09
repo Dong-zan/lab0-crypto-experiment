@@ -3,10 +3,11 @@
 from __future__ import annotations
 
 import json
+import platform
 
+import cryptography
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import padding, rsa
-from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
 try:
     from src.crypto_demo import aes_demo, hybrid_demo, rsa_demo
@@ -43,18 +44,38 @@ def run_suite() -> dict[str, object]:
         "medium": "Big Data Security Lab0: cryptography experiment " * 8,
         "long": "A" * 1024,
     }
-    rounds = {}
+    rounds = []
     for name, message in messages.items():
-        rounds[name] = {
-            "plaintext_bytes": len(message.encode("utf-8")),
-            "aes": aes_demo(message).__dict__,
-            "rsa": rsa_demo(message).__dict__ if len(message.encode("utf-8")) <= 190 else "not applicable: RSA-OAEP limit",
-            "hybrid": hybrid_demo(message).__dict__,
+        plaintext_bytes = len(message.encode("utf-8"))
+        aes = aes_demo(message)
+        hybrid = hybrid_demo(message)
+        entry: dict[str, object] = {
+            "case": name,
+            "plaintext_bytes": plaintext_bytes,
+            "aes_ciphertext_bytes": aes.ciphertext_bytes,
+            "aes_elapsed_ms": aes.elapsed_ms,
+            "hybrid_ciphertext_bytes": hybrid.ciphertext_bytes,
+            "hybrid_elapsed_ms": hybrid.elapsed_ms,
         }
+        if plaintext_bytes <= 190:
+            entry["rsa_ciphertext_bytes"] = rsa_demo(message).ciphertext_bytes
+        else:
+            entry["rsa_result"] = "not applicable: RSA-OAEP limit"
+        rounds.append(entry)
+
+    limit = rsa_oaep_limit_case()
     return {
+        "environment": {
+            "python": platform.python_version(),
+            "cryptography": cryptography.__version__,
+        },
         "round_trips": rounds,
-        "rsa_limit": rsa_oaep_limit_case(),
-        "note": "Timings are indicative single-run measurements, not a benchmark.",
+        "rsa_limit": {
+            "key_bits": limit["rsa_key_bits"],
+            "sha256_oaep_max_plaintext_bytes": limit["oaep_sha256_max_plaintext_bytes"],
+            "190_bytes": f"accepted, {limit['190_bytes_ciphertext_bytes']}-byte ciphertext",
+            "191_bytes": f"rejected with {limit['191_bytes_result']}",
+        },
     }
 
 
