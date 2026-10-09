@@ -1,0 +1,41 @@
+{
+  "environment": {
+    "python": "3.12.14",
+    "cryptography": "50.0.2"
+  },
+  "round_trips": [
+    {
+      "case": "short",
+      "plaintext_bytes": 4,
+      "aes_ciphertext_bytes": 20,
+      "aes_elapsed_ms": 0.031,
+      "hybrid_ciphertext_bytes": 20,
+      "hybrid_elapsed_ms": 1.773,
+      "rsa_ciphertext_bytes": 256
+    },
+    {
+      "case": "medium",
+      "plaintext_bytes": 384,
+      "aes_ciphertext_bytes": 400,
+      "aes_elapsed_ms": 0.020,
+      "hybrid_ciphertext_bytes": 400,
+      "hybrid_elapsed_ms": 1.661,
+      "rsa_result": "not applicable: RSA-OAEP limit"
+    },
+    {
+      "case": "long",
+      "plaintext_bytes": 1024,
+      "aes_ciphertext_bytes": 1040,
+      "aes_elapsed_ms": 0.009,
+      "hybrid_ciphertext_bytes": 1040,
+      "hybrid_elapsed_ms": 1.668,
+      "rsa_result": "not applicable: RSA-OAEP limit"
+    }
+  ],
+  "rsa_limit": {
+    "key_bits": 2048,
+    "sha256_oaep_max_plaintext_bytes": 190,
+    "190_bytes": "accepted, 256-byte ciphertext",
+    "191_bytes": "rejected with ValueError"
+  }
+}

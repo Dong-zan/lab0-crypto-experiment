@@ -1,0 +1,33 @@
+{
+  "aes": {
+    "algorithm": "AES-256-GCM",
+    "key_bits": 256,
+    "nonce_bytes": 12,
+    "plaintext_bytes": 47,
+    "ciphertext_bytes": 63,
+    "elapsed_ms": 0.038,
+    "decrypted_text": "Big Data Security Lab0: cryptography experiment",
+    "tamper_detected": true
+  },
+  "rsa": {
+    "algorithm": "RSA-OAEP-SHA256",
+    "key_bits": 2048,
+    "plaintext_bytes": 47,
+    "ciphertext_bytes": 256,
+    "elapsed_ms": 2.33,
+    "decrypted_text": "Big Data Security Lab0: cryptography experiment"
+  },
+  "hybrid": {
+    "key_transport": "RSA-OAEP-SHA256",
+    "data_encryption": "AES-256-GCM",
+    "rsa_key_bits": 2048,
+    "aes_key_bits": 256,
+    "nonce_bytes": 12,
+    "plaintext_bytes": 47,
+    "encrypted_key_bytes": 256,
+    "ciphertext_bytes": 63,
+    "elapsed_ms": 1.692,
+    "decrypted_text": "Big Data Security Lab0: cryptography experiment",
+    "tamper_detected": true
+  }
+}

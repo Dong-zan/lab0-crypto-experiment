@@ -1,0 +1,10 @@
+{
+  "certificate_subject": "CN=Alice,O=Lab0 Demo,C=CN",
+  "certificate_issuer": "CN=Alice,O=Lab0 Demo,C=CN",
+  "certificate_public_key_bits": 2048,
+  "certificate_signature": "sha256",
+  "plaintext_bytes": 31,
+  "encrypted_key_bytes": 256,
+  "ciphertext_bytes": 47,
+  "decrypted_text": "Certificate-backed Lab0 message"
+}

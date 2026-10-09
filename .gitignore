@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+evidence/*.mp4
+evidence/*.zip
+evidence/*.ova
+evidence/*.vdi
+evidence/*.vmdk
+private-key.pem
+*.key
